@@ -49,7 +49,7 @@ app.layout = html.Div([
                 options=[{'label': f'Период {i}', 'value': i} for i in df.columns[2:]],
                 value=1,
                 searchable=False,
-                placeholder='Выберите период...'
+                placeholder='Выберите период...',
             ),
         ], id='consuming-graph-container')
     ], className='dash-container'),
@@ -83,12 +83,13 @@ def display_btn(btn1, btn2):
 def data_to_graph(btn_click, select_period):
     """Convert data frame to graph"""
     prepared_df = df.groupby(['Точка учета'], as_index=True).sum().T
-    select_period = int(select_period) if select_period else 1
-    selected_data = prepared_df[prepared_df.index.astype('int64') >= select_period]
+    select_period = int(select_period) - 1 if select_period else 0
+    selected_data = prepared_df.iloc[select_period:]
 
     fig = px.line(selected_data, x=selected_data.index, y=selected_data.columns, template='plotly_dark')
-    fig.update_layout(xaxis_title='Период', yaxis_title='Значение потребления', hovermode="x")
-    fig.update_traces(mode='lines+markers', hovertemplate="Период: %{x} <br>Потребление: %{y}<extra></extra>", )
+    fig.update_layout(xaxis_title='Период', yaxis_title='Значение потребления кВт', hovermode="x",
+                      title={'text': 'График потребления энергии', 'x': 0.5})
+    fig.update_traces(mode='lines+markers', hovertemplate="Потребление: %{y}<extra><b>%{x}</b></extra>")
     return fig
 
 
