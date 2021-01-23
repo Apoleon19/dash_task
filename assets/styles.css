@@ -19,7 +19,7 @@ body {
 
 .dash-header {
     padding-top: 10px;
-    background: #3b4049;
+    background: #272b32;
 
 }
 
@@ -85,5 +85,28 @@ body {
 
 #dropdown-graph {
     width: 10%;
-    margin-left: 10px;
+    padding-top: 65px;
+    padding-right: 10px;
+    color: #b1b1b1;
+    background-color: #111111;
+}
+
+#dropdown-graph .Select-value-label {
+    color: #b1b1b1;
+}
+
+#dropdown-graph .Select-value {
+    background: #131417;
+}
+
+#dropdown-graph .Select-input {
+    color: #b1b1b1;
+}
+
+#dropdown-graph .Select-menu-outer {
+    background: #131418;
+}
+
+#dropdown-graph .Select-placeholder {
+    background: #131418;
 }
