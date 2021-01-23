@@ -21,7 +21,7 @@ def get_data_from_xml() -> tuple:
                 return name, prepared_data
 
 
-def _parse_area_node(node) -> tuple:
+def _parse_area_node(node: et.Element) -> tuple:
     """parse data from area node and return name and data"""
     name = node.find("name").text
     measuring_points = node.findall('measuringpoint')
@@ -46,7 +46,7 @@ def _parse_area_node(node) -> tuple:
     return name, points_data
 
 
-def _prepare_data(data) -> pd.DataFrame:
+def _prepare_data(data: list) -> pd.DataFrame:
     """prepare area data and convert to data frame"""
     prepared_data = []
     for point in data:
