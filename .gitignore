@@ -2,3 +2,4 @@
 .idea
 /venv
 test_pd.py
+__pycache__
