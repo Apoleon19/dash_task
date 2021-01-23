@@ -64,6 +64,7 @@ app.layout = html.Div([
     Input('btn-change-graph', 'n_clicks')
 )
 def display_btn(btn1, btn2):
+    """change visibility between table and graph"""
     triggered_prop = [prop['prop_id'] for prop in dash.callback_context.triggered][0]
     prepared_styles = list()
     for btn_class in ('btn-change-table', 'btn-change-graph'):
@@ -79,7 +80,8 @@ def display_btn(btn1, btn2):
     Input('btn-change-graph', 'n_clicks'),
     Input('dropdown-graph', 'value')
 )
-def table_to_graph(btn_click, select_period):
+def data_to_graph(btn_click, select_period):
+    """Convert data frame to graph"""
     prepared_df = df.groupby(['Точка учета'], as_index=True).sum().T
     select_period = int(select_period) if select_period else 1
     selected_data = prepared_df[prepared_df.index.astype('int64') >= select_period]

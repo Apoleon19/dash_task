@@ -48,18 +48,14 @@ def _parse_area_node(node) -> tuple:
 
 def _prepare_data(data) -> pd.DataFrame:
     """prepare area data and convert to data frame"""
-    # measuringpoint name, measuringchannel desc, 1...48 periods
     prepared_data = []
     for point in data:
         for channels in point['channels']:
             prepared_dict = {'name': point['name'], 'channel_name': channels['desc']}
             periods = channels['periods']
             for index, period in enumerate(periods):
-                prepared_dict.update({f'{index+1}': period['value']})
+                prepared_dict.update({f'{index + 1}': period['value']})
             prepared_data.append(prepared_dict)
     df = pd.DataFrame(prepared_data)
     df.rename(columns={'name': 'Точка учета', 'channel_name': 'Канал'}, inplace=True)
     return df
-
-
-get_data_from_xml()
