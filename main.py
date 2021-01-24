@@ -27,18 +27,19 @@ app.layout = html.Div([
             style_cell={
                 'whiteSpace': 'normal',
                 'height': 'auto',
-                'border': '1px solid #999999'
+                'border': '1px solid #9c9c9c',
+                'backgroundColor': '#323844'
             },
-            style_header={'textAlign': 'center', 'backgroundColor': 'rgb(220, 220, 220)', 'font-weight': 'bold'},
-            style_data={'textAlign': 'center', 'background': ''},
-            style_table={'marginTop': '5px', 'background': 'none'},
+            style_header={'textAlign': 'center', 'backgroundColor': '#2a303a', 'font-weight': 'bold'},
+            style_data={'textAlign': 'center'},
+            style_table={'marginTop': '5px', 'color': '#acbcd5'},
             style_data_conditional=[
                 {'if': {'row_index': 'odd'},
-                 'backgroundColor': '#e0e0e0'},
+                 'backgroundColor': '#353c48'},
                 {
                     'if': {'state': 'selected'},
-                    'backgroundColor': '#c2c2c2',
-                    'border': '1px solid black'
+                    'backgroundColor': '#555a62',
+                    'border': '1px solid white'
                 }
             ]
         ), id='consuming-table-container'),
